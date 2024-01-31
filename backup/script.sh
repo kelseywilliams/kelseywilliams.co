@@ -1,0 +1,1 @@
+mysqldump -u root -h db R3FreeDB > /backup.sql

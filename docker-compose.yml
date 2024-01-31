@@ -1,0 +1,53 @@
+# Most recent docker compose version
+version: "3.8"
+
+services:
+  web:
+    # Builds web service image from docker file in ./web
+    build: ./web
+    # maps host port 8080 to container port 8080
+    ports:
+      - 80:80
+
+  db:
+    # Builds image from mysql image
+    image: mysql
+    # Initialize environment variables
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+      MYSQL_DATABASE: user
+    # Restart on failure of mysql daemon
+    restart: always
+    # Map host port 3306 to container port 3306
+    ports:
+      - "3306:3306"
+    # Test mysql server is healthy with ping
+    healthcheck:
+      test: mysql -u root -h db -e '\q' || exit 1
+      interval: 10s
+      timeout: 1s
+      retries: 5
+      start_period: 5s
+
+  db_seeder:
+    # Build seeder image from dockerfile in ./database
+    build: ./database 
+    # if db service is healthy, start db_seeder service
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db_backup:
+    # Image for a cron daemon that will run parallel to web and db containers
+    build: ./backup
+    # Restart on failure of cron daemon
+    #restart: always
+    # Allow access to terminal
+    #tty: true
+
+
+
+# Volume to hold history/legacy data 
+volumes:
+  R3FreeDB:
+
