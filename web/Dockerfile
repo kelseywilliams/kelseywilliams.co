@@ -13,20 +13,31 @@ RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 # Copy the site default config files into sites available on container
 COPY ./.apache2/sites-available/* /etc/apache2/sites-available/
+<<<<<<< HEAD
+=======
+
+COPY ./.apache2/ports.conf /etc/apache2/ports.conf
+
+>>>>>>> b4b9a12422067083881da8942eae3b9c444cdd2b
 
 COPY . .
 
 # Install mysqli for database connections via php
-RUN docker-php-ext-install mysqli && a2enmod rewrite
+RUN docker-php-ext-install mysqli
 
-# Install SSl certificates and enable SSL
+# Enable apache rewrite mod
+RUN a2enmod rewrite
 
-COPY ./certs/* /etc/apache2/ssl/
-
+# Enable SSL
 RUN a2enmod ssl
+
+# link site configuration file and sites enabled
+RUN ln -s /etc/apache2/sites-available/kelseywilliams.co.conf /etc/apache2/sites-enabled/kelseywilliams.co.conf
 
 # Enable kelseywilliams.co configuration
 RUN a2ensite kelseywilliams.co
+
+RUN service apache2 restart
 
 # Expose http and https ports
 # http
