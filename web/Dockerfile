@@ -32,7 +32,7 @@ RUN a2enmod rewrite
 RUN a2enmod ssl
 
 # link site configuration file and sites enabled
-RUN ln -s /etc/apache2/sites-available/kelseywilliams.co.conf /etc/apache2/sites-enabled/kelseywilliams.co.conf
+#RUN ln -s /etc/apache2/sites-available/kelseywilliams.co.conf /etc/apache2/sites-enabled/kelseywilliams.co.conf
 
 RUN service apache2 restart
 
