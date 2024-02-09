@@ -13,12 +13,9 @@ RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 # Copy the site default config files into sites available on container
 COPY ./.apache2/sites-available/* /etc/apache2/sites-available/
-<<<<<<< HEAD
-=======
 
 COPY ./.apache2/ports.conf /etc/apache2/ports.conf
 
->>>>>>> b4b9a12422067083881da8942eae3b9c444cdd2b
 
 COPY . .
 

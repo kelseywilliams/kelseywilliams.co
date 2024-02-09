@@ -6,7 +6,7 @@ services:
       image: docker.io/mailserver/docker-mailserver
       hostname: mail-server
       # example.com should be replaced with the own domain for the mail server:
-      domainname: localhost
+      domainname: kelseywilliams.co
       ports:
         - "25:25"
         - "587:587"
@@ -37,8 +37,7 @@ services:
     build: ./web
     # maps host port 8080 to container port 8080
     ports:
-      - "80:80"
-      - "443:443"
+      - 80:80
 
   db:
     # Builds image from mysql image
