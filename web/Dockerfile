@@ -22,6 +22,9 @@ COPY . .
 # Install mysqli for database connections via php
 RUN docker-php-ext-install mysqli
 
+# Enable kelseywilliams.co configuration
+RUN a2ensite kelseywilliams.co
+
 # Enable apache rewrite mod
 RUN a2enmod rewrite
 
@@ -30,9 +33,6 @@ RUN a2enmod ssl
 
 # link site configuration file and sites enabled
 RUN ln -s /etc/apache2/sites-available/kelseywilliams.co.conf /etc/apache2/sites-enabled/kelseywilliams.co.conf
-
-# Enable kelseywilliams.co configuration
-RUN a2ensite kelseywilliams.co
 
 RUN service apache2 restart
 
