@@ -12,12 +12,21 @@ WORKDIR /var/www/html
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 # Copy the site default config files into sites available on container
-COPY ./apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY ./apache2/sites-available/* /etc/apache2/sites-available/*
 
 COPY . .
 
 # Install mysqli for database connections via php
 RUN docker-php-ext-install mysqli && a2enmod rewrite
+
+# Install SSl certificates and enable SSL
+
+COPY ./certs/* /etc/apache2/ssl/
+
+RUN a2enmod ssl
+
+# Enable kelseywilliams.co configuration
+RUN a2ensite kelseywilliams.co
 
 # Expose http and https ports
 # http
