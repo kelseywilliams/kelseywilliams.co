@@ -12,7 +12,7 @@ WORKDIR /var/www/html
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 # Copy the site default config files into sites available on container
-COPY ./.apache2/sites-available/* /etc/apache2/sites-available/*
+COPY ./.apache2/sites-available/* /etc/apache2/sites-available/
 
 COPY . .
 
