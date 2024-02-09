@@ -1,1 +1,3 @@
-Hello?
+<?php
+    header('Location: unnamed.png');
+?>
