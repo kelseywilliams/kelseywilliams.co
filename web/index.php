@@ -1,3 +1,3 @@
 <?php
-    header('Location: unamed.png');
+    header('Location: unnamed.png');
 ?>
