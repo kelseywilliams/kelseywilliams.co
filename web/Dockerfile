@@ -6,7 +6,7 @@ FROM php:8-apache
 #RUN mkdir -p /etc/apache2/ssl
 
 # Set the working directory to /var/www/html/ in container
-WORKDIR /
+WORKDIR /etc/apache2/
 
 # Changes php initialization from development to production (i think)
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
