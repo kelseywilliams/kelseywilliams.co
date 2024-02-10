@@ -6,7 +6,7 @@ FROM php:8-apache
 #RUN mkdir -p /etc/apache2/ssl
 
 # Set the working directory to /var/www/html/ in container
-WORKDIR /var/www/html
+WORKDIR /
 
 # Changes php initialization from development to production (i think)
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
@@ -17,7 +17,7 @@ COPY ./.apache2/sites-available/* /etc/apache2/sites-available/
 COPY ./.apache2/ports.conf /etc/apache2/ports.conf
 
 
-COPY . .
+COPY ./site/* /var/www/html/
 
 # Install mysqli for database connections via php
 RUN docker-php-ext-install mysqli
