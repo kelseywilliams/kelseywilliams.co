@@ -1,2 +1,4 @@
 /certs/*
-.key
+*.key
+*.ca
+*.crt
