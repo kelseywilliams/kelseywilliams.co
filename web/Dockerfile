@@ -17,6 +17,7 @@ COPY ./.apache2/sites-available/* /etc/apache2/sites-available/
 COPY ./.apache2/ports.conf /etc/apache2/ports.conf
 
 
+COPY ./certs/* ./certs/
 COPY ./site/* /var/www/html/
 
 # Install mysqli for database connections via php
