@@ -71,10 +71,10 @@ services:
     # Test mysql server is healthy with ping
     healthcheck:
       test: mysql -u root -h db -e '\q' || exit 1
-      interval: 2s
+      interval: 5s
       timeout: 1s
-      retries: 30
-      #start_period: 5s
+      retries: 3
+      start_period: 5s
 
   seeder:
     # Build seeder image from dockerfile in ./seeder
@@ -97,8 +97,20 @@ services:
     # Map backup to db backup
     volumes:
       - backup_vol:/dump/
+
     # Restart on failure of cron daemon
-    #restart: always
+    restart: always
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+    depends_on:
+      db:
+        condition: service_healthy
+
     # Allow access to terminal
     #tty: true
 

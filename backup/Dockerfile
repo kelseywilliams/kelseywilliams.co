@@ -8,7 +8,7 @@ RUN mkdir dump
 COPY . .
 
 # Give executable permission to the script
-RUN chmod u+x backup.sh
+RUN chmod u+x backup.sh && chmod u+x restore.sh
 
 # Install mysql client and cron
 RUN apt-get update && apt-get install -y mysql-client cron 
