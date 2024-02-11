@@ -64,9 +64,9 @@ services:
     # Test mysql server is healthy with ping
     healthcheck:
       test: mysql -u root -h db -e '\q' || exit 1
-      interval: 60s
+      interval: 2s
       timeout: 1s
-      retries: 5
+      retries: 30
       #start_period: 5s
 
   db_seeder:
@@ -83,7 +83,8 @@ services:
 
     # Map backup to db backup
     volumes:
-      - backup_vol:/dump/
+      - web/backup:/dump/
+      - /dump/:/dump/
     # Restart on failure of cron daemon
     #restart: always
     # Allow access to terminal
@@ -94,5 +95,7 @@ services:
 # Volume to hold history/legacy data 
 volumes:
   apache_logs:
-  backup_vol:
+  web/backup:
+  /dump/:
+
 
