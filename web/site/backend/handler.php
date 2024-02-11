@@ -23,7 +23,7 @@
             $result = $mysqli->query("INSERT INTO gen_table (entry) VALUES ('{$input}');");
         }
         catch (Exception $e){
-            echo $mysqli->error;
+            error_log($mysqli->error);
         }
 
         if($result) {
