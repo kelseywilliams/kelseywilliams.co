@@ -83,8 +83,7 @@ services:
 
     # Map backup to db backup
     volumes:
-      - web/backup:/dump/
-      - /dump/:/dump/
+      - backup_vol:/dump/
     # Restart on failure of cron daemon
     #restart: always
     # Allow access to terminal
@@ -95,7 +94,6 @@ services:
 # Volume to hold history/legacy data 
 volumes:
   apache_logs:
-  web/backup:
-  /dump/:
+  backup_vol:
 
 
