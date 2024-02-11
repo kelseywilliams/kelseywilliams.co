@@ -36,6 +36,9 @@ services:
     # Builds web service image from docker file in ./web
     build: ./web
 
+    # Set container name
+    container_name: web
+
     # Map apache logs to apache_logs volume
     volumes:
       - apache_logs:/var/log/apache2
@@ -52,6 +55,9 @@ services:
   db:
     # Builds image from mysql image
     image: mysql
+
+    # Set container name
+    container_name: db
     # Initialize environment variables
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
@@ -70,7 +76,7 @@ services:
       retries: 30
       #start_period: 5s
 
-  db_seeder:
+  seeder:
     # Build seeder image from dockerfile in ./database
     build: ./database 
     # if db service is healthy, start db_seeder service
