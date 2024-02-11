@@ -1,0 +1,1 @@
+mysql -u root -h db < /dump/backup.sql

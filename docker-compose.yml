@@ -91,6 +91,9 @@ services:
     # Image for a cron daemon that will run parallel to web and db containers
     build: ./backup
 
+    # Set container name
+    container_name: backup
+
     # Map backup to db backup
     volumes:
       - backup_vol:/dump/
