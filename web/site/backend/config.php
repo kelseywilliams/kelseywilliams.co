@@ -3,7 +3,7 @@
         'host'=>'db',
         'username'=>'root',
         'password'=> '',
-        'db'=>'user'
+        'db'=>'dummy'
         );
     return $config;
 ?>

@@ -35,6 +35,10 @@ services:
   web:
     # Builds web service image from docker file in ./web
     build: ./web
+
+    # Map apache logs to apache_logs volume
+    volumes:
+      - apache_logs:/var/log/apache2
     # maps host port 8080 to container port 8080
     ports:
       - "80:80"
@@ -51,7 +55,7 @@ services:
     # Initialize environment variables
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
-      MYSQL_DATABASE: user
+      MYSQL_DATABASE: dummy
     # Restart on failure of mysql daemon
     restart: always
     # Map host port 3306 to container port 3306
@@ -73,9 +77,13 @@ services:
       db:
         condition: service_healthy
 
-  db_backup:
+  backup:
     # Image for a cron daemon that will run parallel to web and db containers
     build: ./backup
+
+    # Map backup to db backup
+    volumes:
+      - backup_vol:/dump/
     # Restart on failure of cron daemon
     #restart: always
     # Allow access to terminal
@@ -85,5 +93,6 @@ services:
 
 # Volume to hold history/legacy data 
 volumes:
-  R3FreeDB:
+  apache_logs:
+  backup_vol:
 

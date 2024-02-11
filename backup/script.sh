@@ -1,1 +1,1 @@
-mysqldump -u root -h db R3FreeDB > /backup.sql
+mysqldump -u root -h db dummy > /dump/backup.sql

@@ -20,7 +20,7 @@ COPY ./.apache2/ports.conf /etc/apache2/ports.conf
 COPY ./certs/* ./certs/
 
 # Install website
-COPY ./site/* /var/www/html/
+COPY ./site/. /var/www/html/.
 
 # Install mysqli for database connections via php
 RUN docker-php-ext-install mysqli
