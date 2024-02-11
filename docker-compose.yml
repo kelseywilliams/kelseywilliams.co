@@ -77,8 +77,11 @@ services:
       #start_period: 5s
 
   seeder:
-    # Build seeder image from dockerfile in ./database
-    build: ./database 
+    # Build seeder image from dockerfile in ./seeder
+    build: ./seeder 
+
+    # Set container name
+    container_name: seeder
     # if db service is healthy, start db_seeder service
     depends_on:
       db:
