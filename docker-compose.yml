@@ -101,16 +101,6 @@ services:
     # Restart on failure of cron daemon
     restart: always
 
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-
-    depends_on:
-      db:
-        condition: service_healthy
-
     # Allow access to terminal
     #tty: true
 
