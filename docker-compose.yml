@@ -54,7 +54,7 @@ services:
     image: mysql
     # Initialize environment variables
     environment:
-      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_HOST: "kelseywilliams.co"
       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
       MYSQL_DATABASE: dummy
     # Restart on failure of mysql daemon
