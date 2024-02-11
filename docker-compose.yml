@@ -54,6 +54,7 @@ services:
     image: mysql
     # Initialize environment variables
     environment:
+      MYSQL_ROOT_HOST: '%'
       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
       MYSQL_DATABASE: dummy
     # Restart on failure of mysql daemon
@@ -61,6 +62,7 @@ services:
     # Map host port 3306 to container port 3306
     ports:
       - "3306:3306"
+      - "33060:33060"
     # Test mysql server is healthy with ping
     healthcheck:
       test: mysql -u root -h db -e '\q' || exit 1
