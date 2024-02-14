@@ -36,9 +36,6 @@ services:
     # Builds web service image from docker file in ./web
     build: ./web
 
-    # Set container name
-    container_name: web
-
     # Map apache logs to apache_logs volume
     volumes:
       - apache_logs:/var/log/apache2
@@ -56,8 +53,6 @@ services:
     # Builds image from mysql image
     image: mysql
 
-    # Set container name
-    container_name: db
     # Initialize environment variables
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
@@ -71,17 +66,15 @@ services:
     # Test mysql server is healthy with ping
     healthcheck:
       test: mysql -u root -h db -e '\q' || exit 1
-      interval: 5s
+      interval: 2s
       timeout: 1s
-      retries: 3
+      retries: 30
       start_period: 5s
 
   seeder:
     # Build seeder image from dockerfile in ./seeder
     build: ./seeder 
 
-    # Set container name
-    container_name: seeder
     # if db service is healthy, start db_seeder service
     depends_on:
       db:
@@ -90,9 +83,6 @@ services:
   backup:
     # Image for a cron daemon that will run parallel to web and db containers
     build: ./backup
-
-    # Set container name
-    container_name: backup
 
     # Map backup to db backup
     volumes:
