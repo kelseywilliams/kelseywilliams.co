@@ -28,6 +28,9 @@ RUN docker-php-ext-install mysqli
 # Enable kelseywilliams.co configuration
 RUN a2ensite kelseywilliams.co
 
+# Enable mod_proxy 
+RUN a2enmod proxy && a2enmod proxy_http && a2enmod proxy_balancer && a2enmod lbmethod_byrequests
+
 # Enable apache rewrite mod
 RUN a2enmod rewrite
 

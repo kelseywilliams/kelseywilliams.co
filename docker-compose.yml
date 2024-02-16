@@ -32,6 +32,39 @@ services:
   #     cap_add:
   #       - NET_ADMIN # For Fail2Ban to work
   #       - SYS_PTRACE
+  traefik:
+    build: ./traefik
+
+    environment:
+      - DOCKER_HOST=ssh://root@kelseywilliams.co
+
+    volumes:
+      - certs:/etc/ssl/certs/
+
+    command:
+      - "--api.insecure=true"
+      - "--api.debug=true"
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      # - "--certificatesresolvers.myresolver.file.filename=/etc/ssl/certs/kelseywilliams.co.crt"
+      # - "--certificatesresolvers.myresolver.file.privatekey=/etc/ssl/certs/kelseywilliams.co.key"
+      # - "--certificatesresolvers.myresolver.file.tls=true"
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`localhost`)"
+      - "traefik.http.routers.traefik.service=api@internal"
+      # - "traefik.http.middlewares.basic-auth.basicauth.users=admin:$apr1$pigt8bSV$eoAYMrb/smicvLBQujIJm/"
+      # - "traefik.http.routers.traefik.middlewares=basic-auth"
+  
+    ports:
+      - "80:80"
+      - "443:443"
+
+    tty: true
+
   web:
     # Builds web service image from docker file in ./web
     build: ./web
@@ -39,10 +72,18 @@ services:
     # Map apache logs to apache_logs volume
     volumes:
       - apache_logs:/var/log/apache2
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dms.rule=Host(`localhost`)"
+      - "traefik.http.routers.web.entrypoints=web,websecure" # Define the entry points
+      - "traefik.http.routers.web.tls=true" # Enable TLS termination
+      - "traefik.http.services.web.loadbalancer.server.port=80"
+
     # maps host port 8080 to container port 8080
-    ports:
-      - "80:80"
-      - "443:443"
+    # ports:
+    #   - "80:80"
+    #   - "443:443"
 
     healthcheck:
       test:  ["CMD", "curl", "-f", "https://kelseywilliams.co"]
@@ -60,9 +101,9 @@ services:
     # Restart on failure of mysql daemon
     restart: always
     # Map host port 3306 to container port 3306
-    ports:
-      - "3306:3306"
-      - "33060:33060"
+    # ports:
+    #   - "3306:3306"
+    #   - "33060:33060"
     # Test mysql server is healthy with ping
     healthcheck:
       test: mysql -u root -h db -e '\q' || exit 1
@@ -94,11 +135,8 @@ services:
     # Allow access to terminal
     #tty: true
 
-
-
 # Volume to hold history/legacy data 
 volumes:
   apache_logs:
   backup_vol:
-
-
+  certs:

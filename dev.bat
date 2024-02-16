@@ -6,4 +6,5 @@ echo off
 docker-compose down
 docker container prune -f
 docker image prune -af
+:: set DOCKER_HOST=ssh://root@kelseywilliams.co
 docker-compose -f docker-compose.yml up
