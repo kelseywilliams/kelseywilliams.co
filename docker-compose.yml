@@ -46,7 +46,7 @@ services:
        - "1025:1025"
 
     healthcheck:
-      test:  ["CMD", "curl", "-f", "https://web:1025"]
+      test:  ["CMD", "curl", "-f", "http://web:1025"]
       interval: 10s
       timeout: 1s
 
