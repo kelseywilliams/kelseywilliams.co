@@ -36,8 +36,8 @@ services:
     # Builds web service image from docker file in ./web
     build: ./web
 
-    # volumes:
-    #   - /etc/ssl/certs/:/etc/ssl/certs/
+    volumes:
+      - /etc/ssl/certs/:/etc/ssl/certs/
 
     networks:
       - site
@@ -46,7 +46,7 @@ services:
        - "1025:1025"
 
     healthcheck:
-      test:  ["CMD", "curl", "-f", "http://web:1025"]
+      test:  ["CMD", "curl", "-f", "https://web:1025"]
       interval: 10s
       timeout: 1s
 
