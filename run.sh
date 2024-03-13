@@ -5,4 +5,4 @@
 docker stop $(docker ps -a -q)
 docker container prune -f
 docker image prune -af
-docker-compose -f traefik.yml -f docker-compose.yml up
+docker-compose -f docker-compose.yml up

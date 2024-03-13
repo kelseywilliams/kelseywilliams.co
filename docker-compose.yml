@@ -36,11 +36,11 @@ services:
     # Builds web service image from docker file in ./web
     build: ./web
 
-    volumes:
-      - /etc/ssl/certs/:/etc/ssl/certs/
+    # volumes:
+    #   - /etc/ssl/certs/:/etc/ssl/certs/
 
     networks:
-      - dev
+      - site
 
     ports:
        - "1025:1025"
@@ -62,7 +62,7 @@ services:
     restart: always
 
     networks:
-      - dev
+      - site
 
     ports:
        - "3306:3306"
@@ -80,7 +80,7 @@ services:
     build: ./seeder 
 
     networks:
-      - dev
+      - site
 
     depends_on:
       db:
@@ -91,7 +91,7 @@ services:
     build: ./backup
 
     networks:
-      - dev
+      - site
 
     restart: always
 
@@ -102,7 +102,7 @@ services:
     #tty: true
 
 networks:
-  dev:
+  site:
     external: true
 
 # Volume to hold history/legacy data 
