@@ -2,7 +2,7 @@
     session_start();
 
     $config = include("backend/config.php");
-    $mysqli = new mysqli($config["host"], $config["username"], $config["password"], $config["db"]);
+    $mysqli = new mysqli($config["host"], $config["username"], $config["password"], $config["db"],  $config['port']);
     $mysqli->set_charset("utf8mb4");
     $stmt = $mysqli->prepare("SELECT * FROM gen_table");
     $stmt->execute();

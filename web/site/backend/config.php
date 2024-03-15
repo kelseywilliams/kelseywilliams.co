@@ -3,7 +3,8 @@
         'host'=>'db',
         'username'=>'root',
         'password'=> '',
-        'db'=>'dummy'
+        'db'=>'dummy',
+        'port'=> 3306,
         );
     return $config;
 ?>

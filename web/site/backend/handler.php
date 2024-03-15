@@ -10,14 +10,20 @@
         $DB_USERNAME = $config["username"];
         $DB_PASSWORD = $config["password"];
         $DB = $config["db"];
+        $DB_PORT = $config["port"];
 
         // Fetch values sent 
         $input = $_POST["input"];
 
 
+
         // Connect to the database
-        $mysqli = new mysqli($DB_HOST, $DB_USERNAME, $DB_PASSWORD, $DB);
-        
+        try{
+        $mysqli = new mysqli($DB_HOST, $DB_USERNAME, $DB_PASSWORD, $DB, $DB_PORT);
+        }
+        catch (Exception $e){
+            echo $e;
+        }
         // Atempt to create a new user
         try {
             $result = $mysqli->query("INSERT INTO gen_table (entry) VALUES ('{$input}');");
