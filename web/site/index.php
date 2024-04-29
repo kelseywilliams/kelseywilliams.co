@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
 </head>
 <body>
+    <!-- Message Banner -->
     <div class="banner">
         <div id="status" class="<?php echo $status_class ?>"><p class="status"><?php echo $status?></p></div>
     </div>
@@ -50,6 +51,20 @@
         // Set a timeout to execute the function after 5 seconds (5 milliseconds)
         setTimeout(changeStatusClass, 5000);
     </script>
+
+    <header>
+        <div class="header-content">
+            <h1>KWS>_</h1>
+            <input type="text" placeholder="Search...">
+        </div>
+    </header>
+    <nav>
+        <ul class="menu">
+            <li>Home</li>
+            <li>Demo</li>
+            <li>About</li>
+        </ul>
+    </nav>
     <div class="container">
     <h2>Database Input</h2>
         <form action="backend/handler.php" method="post">

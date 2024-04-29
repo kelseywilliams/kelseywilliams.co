@@ -36,8 +36,8 @@ services:
     # Builds web service image from docker file in ./web
     build: ./web
 
-    volumes:
-      - /etc/ssl/certs/:/etc/ssl/certs/
+    # volumes:
+    #   - /etc/ssl/certs/:/etc/ssl/certs/
 
     networks:
       - site
