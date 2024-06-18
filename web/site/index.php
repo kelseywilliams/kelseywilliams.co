@@ -33,16 +33,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesheets/container.css">
     <link rel="stylesheet" href="stylesheets/styles.css">
+    <script src="https://unpkg.com/react@18/umd/react.production.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="scripts/index.js" type="text/jsx"></script>
 </head>
 <body>
     <!-- Message Banner -->
     <div class="banner">
         <div id="status" class="<?php echo $status_class ?>"><p class="status"><?php echo $status?></p></div>
     </div>
-    <script>
+    <!-- <script>
         // Function to change the class of the element with the id "status" to "empty"
         function changeStatusClass() {
-            var statusElement = document.getElementById('status');
+            statusElement = document.getElementById('status');
             if (statusElement) {
                 statusElement.className = 'empty';
             }
@@ -50,21 +54,15 @@
 
         // Set a timeout to execute the function after 5 seconds (5 milliseconds)
         setTimeout(changeStatusClass, 5000);
+    </script> -->
+    <div id="index"></div>
+    <script type="text/jsx">
+        ReactDOM.createRoot(document.getElementById("header")).render(
+            <React.StrictMode>
+                <Header />
+            </React.StrictMode>
+        );
     </script>
-
-    <header>
-        <div class="header-content">
-            <h1>KWS>_</h1>
-            <input type="text" placeholder="Search...">
-        </div>
-    </header>
-    <nav>
-        <ul class="menu">
-            <li>Home</li>
-            <li>Demo</li>
-            <li>About</li>
-        </ul>
-    </nav>
     <div class="container">
     <h2>Database Input</h2>
         <form action="backend/handler.php" method="post">

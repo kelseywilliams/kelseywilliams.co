@@ -6,8 +6,8 @@ echo off
 ::     * Sets docker host to a remote
 :: just type runl!
 
-docker-compose down
-docker container prune -f
-docker image prune -af
+@REM docker-compose down
+@REM docker container prune -f
+@REM docker image prune -af
 :: set DOCKER_HOST=ssh://kelsey@localhost
-docker-compose -f docker-compose.yml up
+docker-compose -f docker-compose.yml up --build

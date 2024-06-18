@@ -12,9 +12,9 @@ WORKDIR /etc/apache2/
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 # Copy the site default config files into sites available on container
-COPY ./.apache2/sites-available/* /etc/apache2/sites-available/
+COPY ./apache2/sites-available/* /etc/apache2/sites-available/
 
-COPY ./.apache2/ports.conf /etc/apache2/ports.conf
+#COPY ./apache2/ports.conf /etc/apache2/ports.conf
 
 # Install certificates folder
 COPY ./certs/* ./certs/
@@ -26,7 +26,7 @@ COPY ./site/. /var/www/html/.
 RUN docker-php-ext-install mysqli
 
 # Enable kelseywilliams.co configuration
-RUN a2ensite kelseywilliams.co
+RUN a2ensite httpd
 
 # Enable mod_proxy 
 RUN a2enmod proxy && a2enmod proxy_http && a2enmod proxy_balancer && a2enmod lbmethod_byrequests
@@ -41,9 +41,3 @@ RUN a2enmod ssl
 #RUN ln -s /etc/apache2/sites-available/kelseywilliams.co.conf /etc/apache2/sites-enabled/kelseywilliams.co.conf
 
 RUN service apache2 restart
-
-# Expose http and https ports
-# http
-EXPOSE 80
-# https
-EXPOSE 443
