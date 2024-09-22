@@ -6,4 +6,4 @@ RUN npm install
 
 COPY . .
 
-CMD npm prod
+CMD npm run prod
