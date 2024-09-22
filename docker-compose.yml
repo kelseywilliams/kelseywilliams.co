@@ -1,109 +1,18 @@
 version: "3.8"
 
 services:
-  # maybe?
-  # mail:
-  #     image: docker.io/mailserver/docker-mailserver
-
-  #     # set hostname of name server.  This matches the hostname dictated in the MX record for the specified hostname
-  #     hostname: mail.kelseywilliams.co
-  #     ports:
-  #       - "25:25"
-  #       - "587:587"
-  #       - "465:465"
-
-  #     volumes:
-  #       - ./docker-data/dms/mail-data/:/var/mail/
-  #       - ./docker-data/dms/mail-state/:/var/mail-state/
-  #       - ./docker-data/dms/mail-logs/:/var/log/mail/
-  #       - ./docker-data/dms/config/:/tmp/docker-mailserver/
-  #       - /etc/localtime:/etc/localtime:ro
-  #     environment:
-  #       - ENABLE_FAIL2BAN=1
-  #       # If letsencrypt for SSL/TLS certificate is used (otherwise adapt)
-  #       # - SSL_TYPE=letsencrypt
-  #       - PERMIT_DOCKER=network
-  #       - ONE_DIR=1
-  #       - ENABLE_POSTGREY=0
-  #       - ENABLE_CLAMAV=0
-  #       - ENABLE_SPAMASSASSIN=0
-  #       - SPOOF_PROTECTION=0
-  #     cap_add:
-  #       - NET_ADMIN # For Fail2Ban to work
-  #       - SYS_PTRACE
-
-  web:
-    # Builds web service image from docker file in ./web
-    build: ./web
-
-    # volumes:
-    #   - /etc/ssl/certs/:/etc/ssl/certs/
-
+  home:
+    build: ./home
     networks:
       - site
-
     ports:
-       - "1025:1025"
-
+       - "3000:3000"
     healthcheck:
-      test:  ["CMD", "curl", "-f", "https://web:1025"]
+      test:  ["CMD", "curl", "-f", "https://home:8000"]
       interval: 10s
       timeout: 1s
-
-  db:
-    # Builds image from mysql image
-    image: mysql
-
-    # Initialize environment variables
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
-      MYSQL_DATABASE: dummy 
-
-    restart: always
-
-    networks:
-      - site
-
-    ports:
-       - "2000:3306"
-
-    healthcheck:
-      test: mysql -u root -h db -P 3306 -e '\q' || exit 1
-      interval: 2s
-      timeout: 1s
-      retries: 30
-      start_period: 5s
-
-  seeder:
-    # Build seeder image from dockerfile in ./seeder
-    build: ./seeder 
-
-    networks:
-      - site
-
-    depends_on:
-      db:
-        condition: service_healthy
-
-  backup:
-    # Image for a cron daemon that will run parallel to web and db containers
-    build: ./backup
-
-    networks:
-      - site
-
-    restart: always
-
-    volumes:
-      - backup_vol:/dump/
-
-    # Allow access to terminal
-    #tty: true
 
 networks:
   site:
     external: true
 
-# Volume to hold history/legacy data 
-volumes:
-  backup_vol:

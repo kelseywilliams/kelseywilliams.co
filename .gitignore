@@ -3,3 +3,6 @@
 *.ca
 *.crt
 traefik_rsa
+.env.*
+.env
+/node_modules/*
