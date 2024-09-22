@@ -1,3 +1,4 @@
+/* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +7,12 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    min-height: 100vh; /* Full height of viewport */
+    display: grid; /* Use grid layout */
+    grid-template-rows: 80px 1fr auto; /* Stretch main content, footer stays at the bottom */
 }
 
+/* Header Styles */
 header {
     background-color: #f8f8f8; /* Off white */
     padding: 20px;
@@ -18,9 +23,11 @@ header .logo {
     color: #000; /* Black text */
 }
 
+/* Main Content Styling */
 .container {
     display: flex;
     flex-wrap: wrap;
+    padding: 20px; /* Add some padding to content */
 }
 
 .left-section, .right-section {
@@ -54,7 +61,28 @@ header .logo {
 .applications-content {
     padding: 5px;
     font-size: 12px;
-    /* Additional styling if needed */
+}
+
+/* Footer */
+footer {
+    background-color: #f8f8f8; /* Same as header */
+    text-align: center;
+    padding: 10px;
+}
+
+footer .card {
+    display: inline-block; /* Centering footer content */
+    align-content: center;
+}
+
+footer a {
+    color: #000; /* Footer link color matching header */
+    text-decoration: none;
+    margin: 0 10px; /* Spacing between links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Optional hover effect */
 }
 
 /* Responsive adjustments */
