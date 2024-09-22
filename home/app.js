@@ -13,7 +13,8 @@ app.get("/", (req, res) => {
     if (err) res.sendStatusCode(500);
     res.sendStatusCode(200);
 })
-console.log(process.env.NODE_ENV);
+
+console.log(process.env.NODE_ENV); 
 var server;
 if (process.env.NODE_ENV === "production") {
     var key = fs.readFileSync("/etc/letsencrypt/live/kelseywilliams.co/privkey.pem");
