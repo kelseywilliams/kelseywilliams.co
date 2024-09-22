@@ -4,8 +4,7 @@
   "description": "main page for website",
   "main": "index.js",
   "scripts": {
-    "prod": "set NODE_ENV=production&& node app.js",
-    "dev": "set NODE_ENV=development&& node app.js"
+    "start": "node app.js",
   },
   "author": "Kelsey Williams",
   "license": "ISC",
