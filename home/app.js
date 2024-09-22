@@ -24,7 +24,6 @@ if (process.env.NODE_ENV === "production") {
     };
 
     var server = https.createServer(options, app);
-    server.listen(3000);
     console.log("Express server listening on https");
 } else {
     server = http.createServer(app);
