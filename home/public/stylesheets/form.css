@@ -23,6 +23,7 @@ input, textarea {
     border-radius: 5px;
     width: 100%;
     max-width: 100%;
+    resize:none;
 }
 
 button {
@@ -38,4 +39,10 @@ button {
 
 button:hover {
     background-color: #555;
+}
+
+@media (min-width: 500px) {
+    form {
+        width:400px;
+    }
 }
