@@ -17,7 +17,7 @@ console.log(process.env.NODE_ENV);
 var server;
 if (process.env.NODE_ENV === "production") {
     var key = fs.readFileSync("/etc/ssl/certs/privkey.pem");
-    var cert = fs.readFileSync("/etc/ssl/certs/cert.pem");
+    var cert = fs.readFileSync("/etc/ssl/certs/fullchain.pem");
     var options = {
         key: key,
         cert: cert
