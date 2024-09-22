@@ -2,20 +2,20 @@ const express = require("express")
 const http = require("http");
 const https = require("https");
 const fs = require("fs");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv").config();
 
 const app = express()
 const port = 3000
-const NODE_ENV = dotenv.NODE_ENV
+
 
 app.use(express.static("public"));
 app.get("/", (req, res) => {
     if (err) res.sendStatusCode(500);
     res.sendStatusCode(200);
 })
-console.log(NODE_ENV);
+console.log(process.env.NODE_ENV);
 var server;
-if (NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
     var key = fs.readFileSync("/etc/ssl/certs/kelseywilliams.co.key");
     var cert = fs.readFileSync("/etc/ssl/certs/kelseywilliams.co.crt");
     var options = {
