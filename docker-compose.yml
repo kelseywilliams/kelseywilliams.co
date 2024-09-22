@@ -4,7 +4,8 @@ services:
   home:
     build: ./home
     volumes:
-      - /etc/letsencrypt/live/kelseywilliams.co:/etc/letsencrypt/live/kelseywilliams.co:ro
+      - /etc/letsencrypt/live/kelseywilliams.co/privkey.pem:/etc/letsencrypt/live/kelseywilliams.co/privkey.pem:ro
+      - /etc/letsencrypt/live/kelseywilliams.co/fullchain.pem:/etc/letsencrypt/live/kelseywilliams.co/fullchain.pem:ro
     networks:
       - site
     ports:
