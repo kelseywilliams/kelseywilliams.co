@@ -22,13 +22,12 @@ if (process.env.NODE_ENV === "production") {
         key: key,
         cert: cert
     };
-    console.log(options);
 
     var server = https.createServer(options, app);
-    console.log("Express server listening on https");
+    console.log("Express server on https");
 } else {
     server = http.createServer(app);
-    console.log("Express server listening on http");
+    console.log("Express server on http");
 }
 server.listen(3000);
 
