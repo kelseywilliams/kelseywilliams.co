@@ -16,8 +16,8 @@ app.get("/", (req, res) => {
 console.log(process.env.NODE_ENV);
 var server;
 if (process.env.NODE_ENV === "production") {
-    var key = fs.readFileSync("/etc/ssl/certs/privkey.pem");
-    var cert = fs.readFileSync("/etc/ssl/certs/fullchain.pem");
+    var key = fs.readFileSync("/etc/letsencrypt/live/kelseywilliams.co/privkey.pem");
+    var cert = fs.readFileSync("/etc/letsencrypt/live/kelseywilliams.co/fullchain.pem");
     var options = {
         key: key,
         cert: cert
