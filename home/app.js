@@ -16,8 +16,8 @@ app.get("/", (req, res) => {
 console.log(process.env.NODE_ENV);
 var server;
 if (process.env.NODE_ENV === "production") {
-    var key = fs.readFileSync("/etc/ssl/certs/kelseywilliams.co.key");
-    var cert = fs.readFileSync("/etc/ssl/certs/kelseywilliams.co.crt");
+    var key = fs.readFileSync("/etc/letsencrypt/live/kelseywilliams.co/privkey.pem");
+    var cert = fs.readFileSync("/etc/letsencrypt/live/kelseywilliams.co/cert.pem");
     var options = {
         key: key,
         cert: cert
