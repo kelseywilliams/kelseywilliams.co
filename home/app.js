@@ -38,11 +38,10 @@ app.post("/api/input", (req, res) => {
     });
     msg.save().then(message => {
         if (message === msg) {
-            alert("Saved to database successfully.");
+            res.redirect("/input");
         }
     }).catch(err => {
         console.log(`Error saving to database: ${err}`);
-        alert("Error saving to database.");
         res.status(500);
     })
 })
