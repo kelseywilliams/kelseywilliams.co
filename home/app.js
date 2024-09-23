@@ -3,17 +3,60 @@ const http = require("http");
 const https = require("https");
 const fs = require("fs");
 const dotenv = require("dotenv").config();
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const app = express()
 const port = 3000
 
+mongoose.connect(process.env.MONGO_URI);
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDb connection error:"));
+db.once("open", () => {
+    console.log("Connected to MongoDB");
+});
+const messageSchema = new Schema({
+    time: String,
+    msg: String
+});
+const Message = mongoose.model("Message", messageSchema);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 app.get("/", (req, res) => {
-    if (err) res.sendStatusCode(500);
-    res.sendStatusCode(200);
+    if (err) res.status(500);
+    res.status(200);
 })
 
+app.post("/api/input", (req, res) => {
+    const message = req.body.message;
+    const msg = new Message({
+        time: new Date().toLocaleString(),
+        msg: message
+    });
+    msg.save().then(message => {
+        if (message === msg) {
+            console.log(`${message} save to database.`);
+            res.redirect(200, "/");
+        }
+    }).catch(err => {
+        console.log(`Error saving to database: ${err}`);
+        res.status(500);
+    })
+})
+
+app.get("/api/output", async (req, res) => {
+    res.contentType("application/json");
+    try{
+        const msgs = await Message.find({});
+        res.json(msgs);
+    } catch(err) {
+            console.log(`Database output returned error: ${err}`);
+            res.status(500);
+    }
+})
 console.log(process.env.NODE_ENV); 
 var server;
 if (process.env.NODE_ENV === "production") {
