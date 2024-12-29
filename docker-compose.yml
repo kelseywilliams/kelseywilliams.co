@@ -14,7 +14,6 @@ services:
       test:  ["CMD", "curl", "-f", "https://home:8000"]
       interval: 10s
       timeout: 1s
-
 networks:
   site:
     external: true
