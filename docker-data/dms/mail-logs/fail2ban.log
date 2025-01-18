@@ -1,0 +1,41 @@
+2024-02-10 10:44:49,666 fail2ban.server         [746]: INFO    --------------------------------------------------
+2024-02-10 10:44:49,666 fail2ban.server         [746]: INFO    Starting Fail2ban v1.0.2
+2024-02-10 10:44:49,673 fail2ban.observer       [746]: INFO    Observer start...
+2024-02-10 10:44:49,679 fail2ban.database       [746]: INFO    Connected to fail2ban persistent database '/var/lib/fail2ban/fail2ban.sqlite3'
+2024-02-10 10:44:49,681 fail2ban.database       [746]: WARNING New database created. Version '4'
+2024-02-10 10:44:49,682 fail2ban.jail           [746]: INFO    Creating new jail 'postfix'
+2024-02-10 10:44:49,718 fail2ban.jail           [746]: INFO    Jail 'postfix' uses pyinotify {}
+2024-02-10 10:44:49,722 fail2ban.jail           [746]: INFO    Initiated 'pyinotify' backend
+2024-02-10 10:44:49,737 fail2ban.filter         [746]: INFO      maxRetry: 6
+2024-02-10 10:44:49,738 fail2ban.filter         [746]: INFO      findtime: 604800
+2024-02-10 10:44:49,738 fail2ban.actions        [746]: INFO      banTime: 604800
+2024-02-10 10:44:49,738 fail2ban.filter         [746]: INFO      encoding: UTF-8
+2024-02-10 10:44:49,739 fail2ban.filter         [746]: INFO    Added logfile: '/var/log/mail.log' (pos = 0, hash = 041f15f65a56939e7234c892f43d2a6a4ddf2912)
+2024-02-10 10:44:49,739 fail2ban.jail           [746]: INFO    Creating new jail 'dovecot'
+2024-02-10 10:44:49,739 fail2ban.jail           [746]: INFO    Jail 'dovecot' uses pyinotify {}
+2024-02-10 10:44:49,749 fail2ban.jail           [746]: INFO    Initiated 'pyinotify' backend
+2024-02-10 10:44:49,757 fail2ban.datedetector   [746]: INFO      date pattern `''`: `{^LN-BEG}TAI64N`
+2024-02-10 10:44:49,762 fail2ban.filter         [746]: INFO      maxRetry: 6
+2024-02-10 10:44:49,763 fail2ban.filter         [746]: INFO      findtime: 604800
+2024-02-10 10:44:49,763 fail2ban.actions        [746]: INFO      banTime: 604800
+2024-02-10 10:44:49,763 fail2ban.filter         [746]: INFO      encoding: UTF-8
+2024-02-10 10:44:49,764 fail2ban.filter         [746]: INFO    Added logfile: '/var/log/mail.log' (pos = 0, hash = 041f15f65a56939e7234c892f43d2a6a4ddf2912)
+2024-02-10 10:44:49,764 fail2ban.jail           [746]: INFO    Creating new jail 'postfix-sasl'
+2024-02-10 10:44:49,764 fail2ban.jail           [746]: INFO    Jail 'postfix-sasl' uses pyinotify {}
+2024-02-10 10:44:49,780 fail2ban.jail           [746]: INFO    Initiated 'pyinotify' backend
+2024-02-10 10:44:49,783 fail2ban.filter         [746]: INFO      maxRetry: 6
+2024-02-10 10:44:49,784 fail2ban.filter         [746]: INFO      findtime: 604800
+2024-02-10 10:44:49,784 fail2ban.actions        [746]: INFO      banTime: 604800
+2024-02-10 10:44:49,784 fail2ban.filter         [746]: INFO      encoding: UTF-8
+2024-02-10 10:44:49,785 fail2ban.filter         [746]: INFO    Added logfile: '/var/log/mail.log' (pos = 0, hash = 041f15f65a56939e7234c892f43d2a6a4ddf2912)
+2024-02-10 10:44:49,785 fail2ban.jail           [746]: INFO    Creating new jail 'custom'
+2024-02-10 10:44:49,785 fail2ban.jail           [746]: INFO    Jail 'custom' uses pyinotify {}
+2024-02-10 10:44:49,798 fail2ban.jail           [746]: INFO    Initiated 'pyinotify' backend
+2024-02-10 10:44:49,799 fail2ban.filter         [746]: INFO      maxRetry: 6
+2024-02-10 10:44:49,799 fail2ban.filter         [746]: INFO      findtime: 604800
+2024-02-10 10:44:49,799 fail2ban.actions        [746]: INFO      banTime: 15552000
+2024-02-10 10:44:49,799 fail2ban.filter         [746]: INFO      encoding: UTF-8
+2024-02-10 10:44:49,815 fail2ban.jail           [746]: INFO    Jail 'postfix' started
+2024-02-10 10:44:49,822 fail2ban.jail           [746]: INFO    Jail 'dovecot' started
+2024-02-10 10:44:49,829 fail2ban.jail           [746]: INFO    Jail 'postfix-sasl' started
+2024-02-10 10:44:49,831 fail2ban.jail           [746]: INFO    Jail 'custom' started
