@@ -3,15 +3,15 @@ version: "3.8"
 services:
   home:
     build: ./home
-    volumes:
-      - /etc/letsencrypt/live/kelseywilliams.co/privkey.pem:/etc/letsencrypt/live/kelseywilliams.co/privkey.pem:ro
-      - /etc/letsencrypt/live/kelseywilliams.co/fullchain.pem:/etc/letsencrypt/live/kelseywilliams.co/fullchain.pem:ro
+    # volumes:
+    #   - /etc/letsencrypt/live/kelseywilliams.co/privkey.pem:/etc/letsencrypt/live/kelseywilliams.co/privkey.pem:ro
+    #   - /etc/letsencrypt/live/kelseywilliams.co/fullchain.pem:/etc/letsencrypt/live/kelseywilliams.co/fullchain.pem:ro
     networks:
       - site
     ports:
        - "3000:3000"
     healthcheck:
-      test:  ["CMD", "curl", "-f", "https://home:8000"]
+      test:  ["CMD", "curl", "-f", "http://home:3000"]
       interval: 10s
       timeout: 1s
 networks:
