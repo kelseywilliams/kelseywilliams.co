@@ -6,9 +6,6 @@ import dotenv from "dotenv";
 dotenv.config();
 import {
     createClient,
-    SchemaFieldTypes,
-    AggregateGroupByReducers,
-    AggregateSteps,
 } from 'redis';
 
 const client = createClient({
@@ -21,20 +18,8 @@ await client.connect();
 await client.isReady;
 console.log(await client.ping());
 
-// Create redis hash
-// *+* WOW *+* Cool RediSearch Stuff!
-// await client.ft.create("idx:msgs", {
-//     "$.msg": {
-//         type: SchemaFieldTypes.TEXT,
-//         AS: "msg"
-//     }
-// }, {
-//     ON: "JSON",
-//     PREFIX: "msg"
-// });
-
 const app = express()
-const port = 3000
+const port = process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -104,6 +89,6 @@ var server;
 
 server = http.createServer(app);
 console.log("Express server on http");
-server.listen(3000);
+server.listen(port);
 
 console.log('Express started on port 3000');

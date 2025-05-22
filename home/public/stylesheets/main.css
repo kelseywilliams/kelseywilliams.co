@@ -18,9 +18,18 @@ header {
     padding: 20px;
 }
 
-header .logo {
+header .logo{
     font-size: 32px;
     color: #000; /* Black text */
+}
+header .logo:hover {
+    color:orange;
+    font-size: 34px;
+}
+.page {
+    font-size: 32px;
+    color: #000; /* Black text */
+    font-weight:bold;
 }
 
 /* Main Content Styling */
