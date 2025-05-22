@@ -19,7 +19,6 @@ await client.isReady;
 console.log(await client.ping());
 
 const app = express()
-const port = process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -89,6 +88,6 @@ var server;
 
 server = http.createServer(app);
 console.log("Express server on http");
-server.listen(port);
+server.listen(3000);
 
 console.log('Express started on port 3000');
