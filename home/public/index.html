@@ -7,7 +7,7 @@
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <!-- Link to CSS file -->
-    <link rel="stylesheet" href="https://kelseywilliams.co/stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/main.css">
 </head>
 <body>
     <!-- The header remains at the top -->
@@ -25,18 +25,22 @@
                     Welcome. This website acts as a repository for any web projects that I have and as a remote endpoint for any APIs that I may build. Feel free to browse the list of available applications.
                 </p>
             </div>
-            <div class="right-section">
-                <div class="applications-header">Applications</div>
-                <div class="applications-content">
-                    <ul>
-                        <li>
-                            <a href="/input">I/O</a>
-                        </li>
-                        <li>
-                            <a href="/mouse">Mouse</a>
-                        </li>
-                    </ul>
-                </div>
+        </div>
+        <h2 class="container">Projects</h2>
+        <!-- Applications as large tiles -->
+        <div class="tiles-grid">
+            <a href="/input" class="tile">
+                <h3>I/O</h3>
+                <p>Database input and output interface for public data storage and retrieval</p>
+            </a>
+            <a href="/mouse" class="tile">
+                <h3>Mouse</h3>
+                <p>Public playground for your cursor</p>
+            </a>
+            <!-- Additional tile for future expansion -->
+            <div class="tile" style="opacity: 0.5; cursor: default;" onclick="return false;">
+                <h3>Coming Soon</h3>
+                <p>Shopping application</p>
             </div>
         </div>
     </main>
