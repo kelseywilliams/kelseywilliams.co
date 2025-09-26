@@ -3,6 +3,8 @@ import http from "http";
 // import https from "https";
 import fs from "fs";
 import dotenv from "dotenv";
+import logger from "./logger.js"
+
 dotenv.config();
 import {
     createClient,
@@ -12,7 +14,7 @@ const client = createClient({
     url: process.env.REDIS_URL
 });
 
-client.on('error', err => console.log('Redis Client Error', err));
+client.on('error', err => logger.error('Redis Client Error', err));
 
 await client.connect();
 await client.isReady;
@@ -44,7 +46,7 @@ app.post("/api/input", async (req, res) => {
         res.redirect("/api/output")
         res.status(200);
     } catch (err) {
-        console.error(`Error storing message: ${err}`);
+        logger.error(`Error storing message:`, err);
         res.status(500);
     }
 })
@@ -64,7 +66,7 @@ app.get("/api/output", async (req, res) => {
         
         res.json(messages);
       } catch (err) {
-        console.error("Error retrieving messages:", err);
+        logger.error("Error retrieving messages:", err);
         res.status(500)
       }
 })
@@ -86,8 +88,13 @@ var server;
 //     console.log("Express server on http");
 // }
 
-server = http.createServer(app);
-console.log("Express server on http");
-server.listen(3000);
-
-console.log('Express started on port 3000');
+let port = process.env.PORT;
+try{
+    server = http.createServer(app);
+    server.listen(port);
+    logger.info(`Server started on port ${port}`);
+}
+catch(err){
+    logger.error(`Server failed to start on port ${port}`, err)
+    throw new Error(err);
+}
