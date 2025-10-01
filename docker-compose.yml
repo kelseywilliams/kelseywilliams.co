@@ -11,9 +11,6 @@ services:
       interval: 10s
       timeout: 1s
 
-    depends_on:
-        redis:
-            condition: healthy
 networks:
   site:
     external: true
