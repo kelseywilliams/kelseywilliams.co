@@ -263,3 +263,26 @@ footer a:hover { color: #3498db; text-decoration: underline; }
 .message.success { background: #fff; color: #000; border-color: #ccc; }
 .message.error   { background: #f8d7da; color: #000; border-color: #f5c2c7; }
 .message.hidden  { opacity: 0; pointer-events: none; }
+
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #111;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #fff3;
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
