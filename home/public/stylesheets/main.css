@@ -319,27 +319,40 @@ footer a:hover {
 
 /* message box for display error and success messages */
 
+/* Toast notification positioning and animation */
 .message {
-    padding: 12px 16px;
-    border-radius: 10px;
-    font-size: 14px;
-    margin-bottom: 14px;
-    text-align: center;
-    border: 1px solid;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999; /* stays above all other elements */
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 1px solid;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Regular and error variants (keep color scheme simple) */
+.message.success {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ccc;
 }
 
 .message.error {
-    background: #fee;
-    color: #c33;
-    border-color: #fcc;
-}
-
-.message.success {
-    background: #efe;
-    color: #2a7;
-    border-color: #cfc;
+  background: #f8d7da;
+  color: #000000;
+  border-color: #f5c2c7;
 }
 
 .message.hidden {
-    display: none;
+  display: none;
 }
