@@ -82,4 +82,4 @@ async function updateNavbar() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", updateNavbar);
+window.addEventListener("load", updateNavbar);
