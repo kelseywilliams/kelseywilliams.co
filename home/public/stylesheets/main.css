@@ -45,9 +45,6 @@ header #auth {
     display: flex;
 }
 
-/* Keep logged-in hidden until auth check passes */
-#auth-logged-in { display: none; }
-
 /* When JS applies .hidden, hide either section */
 #auth-logged-out.hidden,
 #auth-logged-in.hidden {
