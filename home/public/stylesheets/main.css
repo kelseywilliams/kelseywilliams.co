@@ -39,9 +39,14 @@ header #auth {
 
 #auth-logged-out,
 #auth-logged-in {
-    display: flex;
     align-items: center;
     gap: 10px;
+    display: none;
+}
+
+#auth-logged-out.visible,
+#auth-logged-in.visible {
+  display: flex;
 }
 
 header .login {

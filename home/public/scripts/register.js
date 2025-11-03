@@ -57,11 +57,11 @@ registerForm.addEventListener("submit", async (e) => {
             showVerify();
         } else {
             const err = await res.json();
-            showMessage(`Error. ${err.message}`, true);
+            showMessage(`${err.message}`, true);
         }
 
     } catch (err) {
-        showMessage(`Error. ${err}`, true);
+        showMessage(`${err}`, true);
         console.log(err);
     }
 }); 

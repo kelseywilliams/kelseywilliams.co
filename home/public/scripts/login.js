@@ -39,11 +39,11 @@ document.getElementById("authForm").addEventListener("submit", async (e) => {
             window.location.href = redirect;
         } else {
             const err = await res.json();
-            showMessage(`Error. ${err.message}`, true);
+            showMessage(`${err.message}`, true);
         }
 
     } catch (err) {
-        showMessage(`Error. ${err}`, true);
+        showMessage(`${err}`, true);
         console.log(err);
     }
 }); 
