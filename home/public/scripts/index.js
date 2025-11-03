@@ -15,7 +15,7 @@ function hideMessage() {
     messageBox.className = "message hidden";
 }
 
-const message = sessionStorage("message");
+const message = sessionStorage.getItem("message");
 if (message) {
     showMessage(message);
     sessionStorage.removeItem("message");
