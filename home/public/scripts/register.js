@@ -46,6 +46,7 @@ registerForm.addEventListener("submit", async (e) => {
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: "include",
             body: JSON.stringify({
                 "email" : data.email
             })
