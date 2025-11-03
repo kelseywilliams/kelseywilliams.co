@@ -32,7 +32,7 @@ if (params.get("logout") === "success") {
 
 async function checkAuth() {
     try {
-        const res = await fetch("https://api.kelseywilliams.co/auth/verify", {
+        const res = await fetch("https://api.kelseywilliams.co/auth/user", {
             method: "POST",
             credentials: "include"
         });
