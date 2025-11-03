@@ -1,6 +1,6 @@
 const messageBox = document.getElementById("messageBox");
-const registerForm = document.getElementById("registerForm");
-const verifyForm = document.getElementById("verifyForm");
+const registerForm = document.getElementById("recoveryForm");
+const verifyForm = document.getElementById("resetForm");
 
 let data = {
     email: "",
