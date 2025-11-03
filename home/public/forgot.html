@@ -35,20 +35,33 @@
         <form class="auth-form hidden" id="resetForm">
             <input
                 class="auth-input"
-                name="code" 
-                placeholder="Enter recovery code..." 
+                name="code"
+                placeholder="Enter recovery code..."
                 maxlength="6"
                 required
             >
+
             <input 
                 class="auth-input"
-                name="password" 
+                id="password"
+                name="password"
                 type="password"
-                placeholder="Enter new password..." 
+                placeholder="Enter new password..."
                 required
             >
+
+            <input 
+                class="auth-input"
+                id="confirmPassword"
+                type="password"
+                placeholder="Confirm new password..."
+                required
+                oninput="this.setCustomValidity(this.value !== document.getElementById('password').value ? 'Passwords do not match' : '')"
+            >
+
             <button class="auth-button" type="submit">Reset Password</button>
         </form>
+
     </main>
 
     <footer>
