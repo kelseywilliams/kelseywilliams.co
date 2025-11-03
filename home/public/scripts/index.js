@@ -65,24 +65,20 @@ async function logout() {
     }
 }
 async function updateNavbar() {
-    try {
-        const user = await checkAuth();
+    const user = await checkAuth();
 
-        if (user){
-            loggedOut.classList.add("hidden");
-            loggedIn.classList.remove("hidden");
-            usernameSpan.textContent = user.username;
+    if (user){
+        loggedOut.classList.add("hidden");
+        loggedIn.classList.remove("hidden");
+        usernameSpan.textContent = user.username;
 
-            document.getElementById('logoutBtn').addEventListener("click", async (e) => {
-                e.preventDefault();
-                await logout();
-            });
-        } else {
-            loggedOut.classList.remove("hidden");
-            loggedIn.classList.add("hidden");
-        }
-    } finally {
-        document.getElementById("loading-screen").style.display = "none";
+        document.getElementById('logoutBtn').addEventListener("click", async (e) => {
+            e.preventDefault();
+            await logout();
+        });
+    } else {
+        loggedOut.classList.remove("hidden");
+        loggedIn.classList.add("hidden");
     }
 }
 

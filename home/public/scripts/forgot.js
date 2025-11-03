@@ -4,7 +4,6 @@ const verifyForm = document.getElementById("verifyForm");
 
 let data = {
     email: "",
-    username: "",
     password: "",
     code: ""
 }
@@ -37,11 +36,9 @@ registerForm.addEventListener("submit", async (e) => {
     const formData = new FormData(e.target);
     
     data.email = formData.get("email");
-    data.username = formData.get("username");
-    data.password = formData.get("password");
 
     try {
-        const res = await fetch("https://api.kelseywilliams.co/auth/send-code", {
+        const res = await fetch("https://api.kelseywilliams.co/auth/send-recovery", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -53,7 +50,7 @@ registerForm.addEventListener("submit", async (e) => {
         });
 
         if (res.ok) {
-            showMessage(`A verification code has been sent to ${data.email}`);
+            showMessage(`A recovery code has been sent to ${data.email}`);
             showVerify();
         } else {
             const err = await res.json();
@@ -71,9 +68,10 @@ verifyForm.addEventListener("submit", async (e) => {
 
     const formData = new FormData(e.target);
     data.code = formData.get("code");
+    data.password = formData.get("password");
 
     try {
-        const res = await fetch("https://api.kelseywilliams.co/auth/register", {
+        const res = await fetch("https://api.kelseywilliams.co/auth/forgot", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -83,7 +81,7 @@ verifyForm.addEventListener("submit", async (e) => {
         });
 
         if (res.ok) {
-            sessionStorage.setItem("message", "Registration successful.");
+            sessionStorage.setItem("message", "Password reset successfully.");
             window.location.href="/";
         } else {
             const err = await res.json();
