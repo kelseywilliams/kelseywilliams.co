@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Account Recovery</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/auth.css">
+    <script src="/scripts/forgot.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/" style="color: inherit; text-decoration:none">kelseywilliams.co</a><span class="page">/forgot</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="messageBox" class="message hidden"></div>
+        
+        <!-- Step 1: Request Recovery Code -->
+        <form class="auth-form" id="recoveryForm">
+            <input
+                class="auth-input"
+                name="email" 
+                type="email"
+                placeholder="Enter your account email..." 
+                required
+            >
+            <button class="auth-button" type="submit">Send Recovery Code</button>
+        </form>
+
+        <!-- Step 2: Enter Code + New Password -->
+        <form class="auth-form hidden" id="resetForm">
+            <input
+                class="auth-input"
+                name="code"
+                placeholder="Enter recovery code..."
+                maxlength="6"
+                required
+            >
+
+            <input 
+                class="auth-input"
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Enter new password..."
+                required
+            >
+
+            <input 
+                class="auth-input"
+                id="confirmPassword"
+                type="password"
+                placeholder="Confirm new password..."
+                required
+                oninput="this.setCustomValidity(this.value !== document.getElementById('password').value ? 'Passwords do not match' : '')"
+            >
+
+            <button class="auth-button" type="submit">Reset Password</button>
+        </form>
+
+    </main>
+
+    <footer>
+        <div class="card">
+            <a href="#">Report abuse</a> | <a href="/about">About</a>
+        </div>
+    </footer>
+</body>
+</html>
