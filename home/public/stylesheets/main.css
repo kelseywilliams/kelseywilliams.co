@@ -41,12 +41,16 @@ header #auth {
 #auth-logged-in {
     align-items: center;
     gap: 10px;
-    display: none;
+    display: flex; /* visible by default */
 }
 
-#auth-logged-out.visible,
-#auth-logged-in.visible {
-  display: flex;
+#auth-logged-in {
+    display: none; /* hide logged-in section initially */
+}
+
+#auth-logged-out.hidden,
+#auth-logged-in.hidden {
+    display: none !important;
 }
 
 header .login {
