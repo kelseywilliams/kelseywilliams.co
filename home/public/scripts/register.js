@@ -83,7 +83,8 @@ verifyForm.addEventListener("submit", async (e) => {
         });
 
         if (res.ok) {
-            window.location.href="/?register=success";
+            sessionStorage.setItem("message", "Registration successful.");
+            window.location.href="/";
         } else {
             const err = await res.json();
             showMessage(`Error. ${err.message}`, true);

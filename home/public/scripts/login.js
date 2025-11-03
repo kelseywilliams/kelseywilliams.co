@@ -32,8 +32,11 @@ document.getElementById("authForm").addEventListener("submit", async (e) => {
         });
 
         if (res.ok) {
-            showMessage("Login successful");
-            window.location.href = "/?login=success";
+            const params = new URLSearchParams(window.location.search);
+            const redirect = params.get("redirect") || "/";
+
+            sessionStorage.setItem("message", "Login successful.");
+            window.location.href = redirect;
         } else {
             const err = await res.json();
             showMessage(`Error. ${err.message}`, true);

@@ -15,20 +15,11 @@ function hideMessage() {
     messageBox.className = "message hidden";
 }
 
-const params = new URLSearchParams(window.location.search);
-if (params.get("login") === "success") {
-    showMessage("Login successful!");
+const message = sessionStorage("message");
+if (message) {
+    showMessage(message);
+    sessionStorage.removeItem("message");
 }
-
-if (params.get("register") === "success") {
-    showMessage("Registration successful.");
-}
-
-if (params.get("logout") === "success") {
-    showMessage("Logout successful.");
-}
-
-
 
 async function checkAuth() {
     try {
@@ -51,7 +42,7 @@ async function checkAuth() {
 async function protectPage(){
     const user = await checkAuth();
     if (!user) {
-        window.location.href = '/login';
+        window.location.href = `/login.html?redirect=${encodeURIComponent(window.location.pathname)}`;
     }
 
 }
@@ -66,7 +57,7 @@ async function logout() {
         if (res.ok) {
             loggedOut.classList.remove("hidden");
             loggedIn.classList.add("hidden");
-            window.location.href = "/?logout=success";
+            showMessage("Successfully logged out.");
         } 
 
     } catch (err) {
