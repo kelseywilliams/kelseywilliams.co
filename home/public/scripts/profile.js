@@ -4,7 +4,7 @@ const email = document.getElementById("email");
 const deleteAccount = document.getElementById("delete");
 
 
-async function getUser(){
+async () => {
     await protectPage();
 
     try {
@@ -19,6 +19,7 @@ async function getUser(){
             id.textContent = user.id;
             email.textContent = user.email
         }
+        console.log(`${user}`)
     } catch(err){
         showMessage(err)
     }
