@@ -3,12 +3,6 @@ const id = document.getElementById("id");
 const email = document.getElementById("email");
 const deleteAccount = document.getElementById("delete");
 
-const message = sessionStorage.getItem("message");
-if (message) {
-    showMessage(message);
-    sessionStorage.removeItem("message");
-}
-
 await protectPage();
 
 async function getUser(){

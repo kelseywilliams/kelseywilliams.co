@@ -9,12 +9,6 @@ let data = {
     code: ""
 }
 
-const message = sessionStorage.getItem("message");
-if (message) {
-    showMessage(message);
-    sessionStorage.removeItem("message");
-}
-
 function showVerify() {
     registerForm.classList.add("hidden");
     verifyForm.classList.remove("hidden");

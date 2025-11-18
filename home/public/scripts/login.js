@@ -1,9 +1,3 @@
-const message = sessionStorage.getItem("message");
-if (message) {
-    showMessage(message);
-    sessionStorage.removeItem("message");
-}
-
 document.getElementById("authForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     hideMessage();
