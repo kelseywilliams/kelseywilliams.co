@@ -10,10 +10,12 @@ function showMessage(msg, isError = false, duration = 5000) {
 
     setTimeout(hideMessage, duration);
 }
+window.showMessage = showMessage;
 
 function hideMessage() {
     messageBox.className = "message hidden";
 }
+window.hideMessage = hideMessage;
 
 const message = sessionStorage.getItem("message");
 if (message) {
@@ -38,15 +40,22 @@ async function checkAuth() {
         return null;
     }
 }
+window.checkAuth = checkAuth;
 
 async function protectPage(){
-    const user = await checkAuth();
-    if (!user) {
+    try{
+        const user = await checkAuth();
+        if (!user) {
+            window.location.href = `/login.html?redirect=${encodeURIComponent(window.location.pathname)}`;
+        }
+    } catch {
         window.location.href = `/login.html?redirect=${encodeURIComponent(window.location.pathname)}`;
+
     }
+    
 
 }
-
+window.protectPage = protectPage;
 async function logout() {
     try {
         const res = await fetch("https://api.kelseywilliams.co/auth/logout", {

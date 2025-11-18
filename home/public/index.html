@@ -13,9 +13,10 @@
         <div class="spinner"></div>
     </div>
     <header>
-        <div class="logo">
-            <a href="/" style="color: inherit; text-decoration:none">kelseywilliams.co</a>
+        <div class="logo-group">
+            <a href="/" class="logo">kelseywilliams.co</a>
         </div>
+            
 
         <!-- Show logged-out by default; JS toggles .hidden -->
         <div id="auth-logged-out">
@@ -25,7 +26,7 @@
 
         <!-- Keep logged-in hidden initially -->
         <div id="auth-logged-in" class="hidden">
-            <span class="username-text"><span id="username"></span></span>
+            <a href="/profile" class="username-text"><span id="username"></span></a>
             <a href="#" class="login" id="logoutBtn">Logout</a>
         </div>
     </header>
