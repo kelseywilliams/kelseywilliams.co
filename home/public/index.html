@@ -32,27 +32,33 @@
 
     <main>
         <div id="messageBox" class="message hidden"></div>
-        <div class="container">
+
+        <div class="container description">
             <p>
-                Welcome. This website acts as a repository for any web projects that I have and as a remote endpoint for any APIs that I may build. Feel free to browse the list of available applications.
+                Welcome. This website acts as a repository for any projects that I have
+                and as an endpoint for any APIs that I may build. Feel free to browse
+                the list of available applications.
             </p>
         </div>
-        <h2 class="container">Projects</h2>
-        <div class="tiles-grid">
-            <a href="/input" class="tile">
-                <h3>I/O</h3>
-                <p>Database input and output interface for public data storage and retrieval</p>
-            </a>
-            <a href="/mouse" class="tile">
-                <h3>Mouse</h3>
-                <p>Public playground for your cursor</p>
-            </a>
-            <div class="tile" style="opacity: 0.5; cursor: default;" onclick="return false;">
-                <h3>Coming Soon</h3>
-                <p>Shopping application</p>
-            </div>
+
+        <div class="content-split">
+            <section class="projects">
+                <h2>Projects</h2>
+                <ul>
+                    <li><a href="/chat">Chat – One big public chat room</a></li>
+                    <li><a href="/mouse">Mouse – Public playground for your cursor</a></li>
+                </ul>
+            </section>
+
+            <section class="blog">
+                <h2>Blog</h2>
+                <ul>
+                    <li class="disabled">Under construction</li>
+                </ul>
+            </section>
         </div>
     </main>
+
 
     <footer>
         <div class="card">
