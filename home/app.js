@@ -6,19 +6,6 @@ import dotenv from "dotenv";
 import logger from "./logger.js"
 
 dotenv.config();
-import {
-    createClient,
-} from 'redis';
-
-const client = createClient({
-    url: process.env.REDIS_URL
-});
-
-client.on('error', err => logger.error('Redis Client Error', err));
-
-await client.connect();
-await client.isReady;
-console.log(await client.ping());
 
 const app = express()
 
@@ -31,45 +18,6 @@ app.get("/", (req, res) => {
     res.status(200);
 })
 
-app.post("/api/input", async (req, res) => {
-    const message = req.body.message;
-    try {
-        const id = await client.incr("message:id");
-        const key = `msg:${id}`;
-
-        await client.hSet(key, {
-            time: new Date().toLocaleString(),
-            msg: message,
-        });
-        await client.rPush("messages:list", key);
-
-        res.redirect("/api/output")
-        res.status(200);
-    } catch (err) {
-        logger.error(`Error storing message:`, err);
-        res.status(500);
-    }
-})
-
-app.get("/api/output", async (req, res) => {
-    res.contentType("application/json");
-    try {
-        // Retrieve all keys that start with "msg:"
-        const keys = await client.lRange("messages:list", 0, -1);
-        const messages = [];
-    
-        // Loop through each key and get the hash data
-        for (const key of keys) {
-          const message = await client.hGetAll(key);
-          messages.push(message);
-        }
-        
-        res.json(messages);
-      } catch (err) {
-        logger.error("Error retrieving messages:", err);
-        res.status(500)
-      }
-})
 var server;
 
 // Implement later once tls between services is implemented
