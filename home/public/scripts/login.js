@@ -1,16 +1,8 @@
-const messageBox = document.getElementById("messageBox");
-
-function showMessage(msg, isError = false, duration = 5000) {
-    messageBox.textContent = msg;
-    messageBox.className = isError ? "message error" : "message success";
-
-    setTimeout(hideMessage, duration);
+const message = sessionStorage.getItem("message");
+if (message) {
+    showMessage(message);
+    sessionStorage.removeItem("message");
 }
-
-function hideMessage() {
-    messageBox.className = "message hidden";
-}
-
 
 document.getElementById("authForm").addEventListener("submit", async (e) => {
     e.preventDefault();

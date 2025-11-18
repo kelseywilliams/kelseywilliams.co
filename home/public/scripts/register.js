@@ -1,4 +1,3 @@
-const messageBox = document.getElementById("messageBox");
 const registerForm = document.getElementById("registerForm");
 const verifyForm = document.getElementById("verifyForm");
 
@@ -10,15 +9,10 @@ let data = {
     code: ""
 }
 
-function showMessage(msg, isError = false, duration = 5000) {
-    messageBox.textContent = msg;
-    messageBox.className = isError ? "message error" : "message success";
-
-    setTimeout(hideMessage, duration);
-}
-
-function hideMessage() {
-    messageBox.className = "message hidden";
+const message = sessionStorage.getItem("message");
+if (message) {
+    showMessage(message);
+    sessionStorage.removeItem("message");
 }
 
 function showVerify() {

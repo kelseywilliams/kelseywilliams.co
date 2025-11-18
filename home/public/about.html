@@ -12,8 +12,21 @@
 <body>
     <!-- The header remains at the top -->
     <header>
-        <div class="logo">
-            <a href="/" style="color: inherit; text-decoration:none">kelseywilliams.co</a><span class="page">/about</span>
+        <div class="logo-group">
+            <a href="/" class="logo">kelseywilliams.co</a>
+            <span class="page">/about</span>
+        </div>
+
+                <!-- Show logged-out by default; JS toggles .hidden -->
+        <div id="auth-logged-out">
+            <a href="/register" class="signup">Sign up</a>
+            <a href="/login" class="login">Login</a>
+        </div>
+
+        <!-- Keep logged-in hidden initially -->
+        <div id="auth-logged-in" class="hidden">
+            <a href="/profile" class="username-text"><span id="username"></span></a>
+            <a href="#" class="login" id="logoutBtn">Logout</a>
         </div>
     </header>
 
@@ -23,7 +36,7 @@
             Hi.  My name is Kelsey.  I built this website from the ground up out of a little javascript, html, LLM code, and docker.  I created this website because I didn't have any ideas for a website and so set out to create a hub for any projects I'd like to start eventually, but with a firm design established.  As I traverse the learning curve of web development and cloud computing, bringing ideas to life only becomes easier, faster, and more streamlined.
         </p>
         <p>
-            Some fun facts about my website and its design: The website is a collection of docker containers.  Traffic is routed through the reverse proxy container to the rest. This allows me to build web apps and simply plug them in to be hosted. Here's a crappy paint diagram about it:
+            Some fun facts about my website and its design: The website is a collection of docker containers.  Traffic is routed through the reverse proxy container to the rest. This allows me to build web apps and simply plug them in to be hosted. Here's a diagram about it:
         </p>
         <a href="https://kelseywilliams.co/assets/Untitled.png" target="_blank" rel="noopener noreferrer">
             <img src="https://kelseywilliams.co/assets/Untitled.png" alt="Website architecture diagram">
