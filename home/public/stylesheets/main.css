@@ -51,6 +51,7 @@ header .signup {
 }
 header .username-text {
     color: white;
+    text-decoration: none;
 }
 header .login {
     background: #4f46e5;
