@@ -14,7 +14,7 @@ async function getUser(){
         });
 
         if (res.ok) {
-            const user = res.json();
+            const user = await res.json();
             username.textContent = user.username;
             id.textContent = user.id;
             email.textContent = user.email
