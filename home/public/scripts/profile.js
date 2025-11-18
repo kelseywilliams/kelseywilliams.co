@@ -17,7 +17,9 @@ const deleteAccount = document.getElementById("deleteAccount");
             return;
         }
 
-        const user = await res.json();
+        const result = await res.json();
+        const user = result.data;
+        
         username.textContent = user.username;
         idField.textContent = user.id;
         emailField.textContent = user.email;
