@@ -21,12 +21,12 @@ header {
     align-items: center;
 }
 header .logo-group {
+    font-size: 32px;
     display: flex;
     align-items: center;
     gap: 5px;   /* perfect spacing */
 }
 header .logo {
-    font-size: 32px;
     color: #ecf0f1;
     transition: color 0.2s ease;
     text-decoration:none
@@ -38,7 +38,6 @@ header .logo:hover {
 
 header .page {
     color: #ecf0f1; /* same as header text */
-    font-size: 32px;
     opacity: 0.8;   /* optional style */
 }
 
@@ -216,8 +215,8 @@ footer a:hover {
         gap: 30px;
     }
 
-    header .logo {
-        font-size: 24px;
+    header .logo-group {
+        font-size: 20px;
     }
     header .login,
     header .signup {
