@@ -36,7 +36,6 @@ recoveryForm.addEventListener("submit", async (e) => {
                 "email" : data.email
             })
         });
-        console.log(res)
         if (res.ok) {
             showMessage(`A recovery code has been sent to ${data.email}`);
             showVerify();
