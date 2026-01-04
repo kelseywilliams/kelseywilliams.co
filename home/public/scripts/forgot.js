@@ -1,5 +1,4 @@
-const messageBox = document.getElementById("messageBox");
-const registerForm = document.getElementById("recoveryForm");
+const recoveryForm = document.getElementById("recoveryForm");
 const verifyForm = document.getElementById("resetForm");
 
 let data = {
@@ -9,16 +8,16 @@ let data = {
 }
 
 function showVerify() {
-    registerForm.classList.add("hidden");
+    recoveryForm.classList.add("hidden");
     verifyForm.classList.remove("hidden");
 }
 
 function showRegister() {
-    registerForm.classList.remove("hidden");
+    recoveryForm.classList.remove("hidden");
     verifyForm.classList.add("hidden");
 }
 
-registerForm.addEventListener("submit", async (e) => {
+recoveryForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     hideMessage();
 
@@ -37,7 +36,7 @@ registerForm.addEventListener("submit", async (e) => {
                 "email" : data.email
             })
         });
-
+        console.log(res)
         if (res.ok) {
             showMessage(`A recovery code has been sent to ${data.email}`);
             showVerify();
