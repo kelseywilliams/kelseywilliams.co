@@ -22,7 +22,7 @@ if (message) {
 async function checkAuth() {
     try {
         const res = await fetch("https://api.kelseywilliams.co/auth/user", {
-            method: "POST",
+            method: "GET",
             credentials: "include"
         });
 
