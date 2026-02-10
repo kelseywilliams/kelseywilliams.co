@@ -14,8 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 app.get("/", (req, res) => {
-    if (err) res.status(500);
-    res.status(200);
+    res.status(200).send("OK");;
 })
 
 var server;
@@ -39,7 +38,7 @@ var server;
 let port = process.env.PORT;
 try{
     server = http.createServer(app);
-    server.listen(port);
+    server.listen(port, "0.0.0.0");
     logger.info(`Server started on port ${port}`);
 }
 catch(err){
