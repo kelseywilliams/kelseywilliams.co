@@ -7,7 +7,7 @@ const deleteAccount = document.getElementById("deleteAccount");
     await protectPage();
 
     try {
-        const res = await fetch("http://localhost/api/auth/user", {
+        const res = await fetch("https://api.kelseywilliams.co/auth/user", {
             method: "GET",
             credentials: "include"
         });
@@ -36,7 +36,7 @@ deleteAccount.addEventListener("click", async () => {
     }
 
     try {
-        const res = await fetch("http://localhost/api/auth/delete", {
+        const res = await fetch("https://api.kelseywilliams.co/auth/delete", {
             method: "POST",
             credentials: "include"
         });
