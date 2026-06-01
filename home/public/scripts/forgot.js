@@ -58,7 +58,7 @@ verifyForm.addEventListener("submit", async (e) => {
     data.password = formData.get("password");
 
     try {
-        const res = await fetch("https://localhost/api/auth/forgot", {
+        const res = await fetch("https://api.kelseywilliams.co/auth/forgot", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
