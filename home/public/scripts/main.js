@@ -21,7 +21,7 @@ if (message) {
 
 async function checkAuth() {
     try {
-        const res = await fetch("https://api.kelseywilliams.co/auth/user", {
+        const res = await fetch("http://localhost/api/auth/user", {
             method: "GET",
             credentials: "include"
         });
@@ -53,7 +53,7 @@ window.protectPage = protectPage;
 
 async function logout() {
     try {
-        const res = await fetch("https://api.kelseywilliams.co/auth/logout", {
+        const res = await fetch("http://localhost/api/auth/logout", {
             method: "POST",
             credentials: "include"
         });

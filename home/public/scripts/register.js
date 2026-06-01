@@ -56,7 +56,7 @@ registerForm.addEventListener("submit", async (e) => {
     data.password = formData.get("password");
 
     try {
-        const res = await fetch("https://api.kelseywilliams.co/auth/send-code", {
+        const res = await fetch("http://localhost/api/auth/send-code", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -88,7 +88,7 @@ verifyForm.addEventListener("submit", async (e) => {
     data.code = formData.get("code");
 
     try {
-        const res = await fetch("https://api.kelseywilliams.co/auth/register", {
+        const res = await fetch("http://localhost/api/auth/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

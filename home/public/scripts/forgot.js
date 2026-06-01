@@ -26,7 +26,7 @@ recoveryForm.addEventListener("submit", async (e) => {
     data.email = formData.get("email");
 
     try {
-        const res = await fetch("https://api.kelseywilliams.co/auth/send-recovery", {
+        const res = await fetch("http://localhost/api/auth/send-recovery", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
