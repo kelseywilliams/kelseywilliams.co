@@ -1,3 +1,3 @@
-export const PROTOCOL = "http";
-export const API_DOMAIN = "localhost:3028"
-export const DOMAIN = "localhost"
+export const PROTOCOL = "https";
+export const API_DOMAIN = "api.kelseywilliams.co"
+export const DOMAIN = "kelseywilliams.co"
