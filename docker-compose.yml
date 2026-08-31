@@ -1,7 +1,8 @@
 services:
   home:
     container_name: home
-    build: ./home
+    # build: ./home
+    build: .
     networks:
       - site
     ports:

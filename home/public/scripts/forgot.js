@@ -26,7 +26,7 @@ recoveryForm.addEventListener("submit", async (e) => {
     data.email = formData.get("email");
 
     try {
-        const res = await fetch("https://api.kelseywilliams.co/auth/send-recovery", {
+        const res = await fetch("http://localhost/api/auth/send-recovery", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -58,7 +58,7 @@ verifyForm.addEventListener("submit", async (e) => {
     data.password = formData.get("password");
 
     try {
-        const res = await fetch("https://api.kelseywilliams.co/auth/forgot", {
+        const res = await fetch("http://localhost/api/auth/forgot", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

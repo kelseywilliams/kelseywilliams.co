@@ -1,0 +1,21 @@
+{
+  "name": "homepage",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/kelseywilliams/kelseywilliams.co#readme",
+  "bugs": {
+    "url": "https://github.com/kelseywilliams/kelseywilliams.co/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelseywilliams/kelseywilliams.co.git"
+  },
+  "license": "ISC",
+  "author": "Kelsey Williams",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd backend && npm run start"
+  }
+}
