@@ -2,6 +2,7 @@ const whitelist = [
     "https://kelseywilliams.co",
     "http://localhost",
     "http://192.168.0.182",
+    "https://api.kelseywilliams.co"
 ]
 
 // cb stands for callback, dummy
