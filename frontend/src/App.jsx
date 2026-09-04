@@ -7,6 +7,7 @@ import Profile from "./pages/Profile.jsx"
 import Admin from "./pages/Admin.jsx"
 import Contact from "./pages/Contact.jsx"
 import About from "./pages/About.jsx"
+import K from "./pages/K.jsx"
 import HomeLayout from "./layouts/HomeLayout.jsx"
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
                 <Route path="admin" element={<Admin />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="about" element={<About />} />
+                <Route path="k" element={<K />} />
             </Route>
         </Routes>
     );

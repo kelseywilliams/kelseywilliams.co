@@ -81,8 +81,8 @@ export default function LoginForm() {
                 window.location.href = dest;
             }
 
-        } catch {
-            addToast(`Invalid username or password.`, 1)
+        } catch(e) {
+            addToast(`Invalid username or password. ${e}`, 1)
         } finally {
             setSubmitting(false);
         }
@@ -115,7 +115,7 @@ export default function LoginForm() {
                         required
                     />
                 </label>
-                <button className="btn btn-primary" disabled={submitting} onClick="submit">
+                <button type="submit" className="btn btn-primary" disabled={submitting}>
                     {submitting ? "Logging in..." : "Login"}
                 </button>
             </form>
